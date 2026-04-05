@@ -1,0 +1,19 @@
+Câu hỏi 2 : Nếu bạn tạo một hàm khởi tạo (constructor) để tạo DVD theo tiêu đề (title), sau đó lại tạo một hàm khởi tạo để tạo DVD theo danh mục (category). Java có cho phép bạn làm điều này không?
+
+Trả lời: 
+KHÔNG, Java KHÔNG cho phép điều này. Nếu cố tình viết, chương trình sẽ báo lỗi biên dịch (compilation error) ngay lập tức.
+
+Lý do: 
+Trong ngôn ngữ Java, tính năng nạp chồng phương thức (Method Overloading - bao gồm cả các hàm khởi tạo constructor) được hệ thống phân biệt dựa trên "Chữ ký hàm" (Method Signature). Một chữ ký hàm bao gồm: Tên hàm và Danh sách các tham số (số lượng, kiểu dữ liệu, và thứ tự của tham số). 
+
+Nếu chúng ta tạo hai hàm khởi tạo như sau:
+1. public DigitalVideoDisc(String title)
+2. public DigitalVideoDisc(String category)
+
+Cả hai hàm này thực chất đều có chung một chữ ký hàm là: "DigitalVideoDisc(String)". Trình biên dịch (Compiler) của máy tính rất máy móc, nó chỉ nhìn vào kiểu dữ liệu (ở đây cả hai đều nhận vào một chuỗi String), chứ nó hoàn toàn phớt lờ tên biến do con người đặt (title hay category). 
+
+Do đó, khi chúng ta gọi lệnh khởi tạo: 'new DigitalVideoDisc("Hành động")', trình biên dịch sẽ bị "bối rối" vì nó không thể đoán được chữ "Hành động" mà chúng ta truyền vào là đại diện cho Tiêu đề (title) hay Danh mục (category). 
+
+Để khắc phục và thiết kế đúng chuẩn, chúng ta phải tạo các hàm khởi tạo có danh sách tham số (chữ ký hàm) khác nhau về kiểu dữ liệu hoặc số lượng. Ví dụ:
+- DigitalVideoDisc(String title) 
+- DigitalVideoDisc(String category, String title, float cost)
