@@ -21,6 +21,10 @@ public class DigitalVideoDisc {
 	
 		this.title = title;
 	}
+	public void setTitle(String title){
+		this.title = title;
+	}
+
 	
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		
