@@ -15,6 +15,13 @@ public class Cart {
             System.out.println("The cart is already full. Cannot add more discs.");
         }
     }
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+        // Cách làm chuyên nghiệp: Gọi lại phương thức thêm 1 đĩa đã có
+        addDigitalVideoDisc(dvd1);
+        addDigitalVideoDisc(dvd2);
+
+        System.out.println("The two DVDs have been added.");
+    }
     public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
         for (int i = 0; i < dvdList.length; i++) {
             if (qtyOrdered < MAX_NUMBERS_ORDERED) {
