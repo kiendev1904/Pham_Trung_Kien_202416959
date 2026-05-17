@@ -1,9 +1,14 @@
+package hust.soict.dsai.test.store;
+
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.store.Store;
+
 public class StoreTest {
     public static void main(String[] args) {
         // Tạo cửa hàng
         Store myStore = new Store();
 
-        // Tạo một số DVD mẫu (giả sử lớp DigitalVideoDisc có các constructor phù hợp)
+        // Tạo một số DVD mẫu (giả sử lớp hust.soict.dsai.aims.disc.DigitalVideoDisc có các constructor phù hợp)
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 121, 24.95f);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", "Ron Clements", 90, 18.99f);
@@ -33,7 +38,7 @@ public class StoreTest {
 
         // Thử thêm DVD khi store đầy (không cần test với MAX=100, nhưng có thể thêm vòng lặp để minh họa)
         // (nếu cần, có thể tạo thêm DVD và thêm đến khi đầy)
-        System.out.println("\n--- Store status at end ---");
+        System.out.println("\n--- hust.soict.dsai.aims.store.Store status at end ---");
         myStore.printStore();
     }
 }

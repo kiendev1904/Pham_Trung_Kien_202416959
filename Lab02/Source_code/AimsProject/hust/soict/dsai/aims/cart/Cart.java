@@ -1,4 +1,6 @@
-import java.util.ArrayList; // Có thể không cần, nhưng giữ để tương thích
+package hust.soict.dsai.aims.cart;
+
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Cart {
     private DigitalVideoDisc[] itemsOrdered = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
@@ -79,7 +81,7 @@ public class Cart {
         } else {
             for (int i = 0; i < qtyOrdered; i++) {
                 DigitalVideoDisc dvd = itemsOrdered[i];
-                // Gọi toString() của DigitalVideoDisc (đã được định nghĩa)
+                // Gọi toString() của hust.soict.dsai.aims.disc.DigitalVideoDisc (đã được định nghĩa)
                 System.out.println((i + 1) + ". " + dvd.toString());
             }
         }
@@ -102,7 +104,7 @@ public class Cart {
         }
     }
 
-    // 3. Tìm DVD theo Title (dùng phương thức isMatch trong DigitalVideoDisc)
+    // 3. Tìm DVD theo Title (dùng phương thức isMatch trong hust.soict.dsai.aims.disc.DigitalVideoDisc)
     public void searchByTitle(String title) {
         boolean found = false;
         for (int i = 0; i < qtyOrdered; i++) {
