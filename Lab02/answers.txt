@@ -1,3 +1,4 @@
+#Lab02
 Câu hỏi 2 : Nếu bạn tạo một hàm khởi tạo (constructor) để tạo DVD theo tiêu đề (title), sau đó lại tạo một hàm khởi tạo để tạo DVD theo danh mục (category). Java có cho phép bạn làm điều này không?
 
 Trả lời: 
@@ -19,6 +20,11 @@ Do đó, khi chúng ta gọi lệnh khởi tạo: 'new DigitalVideoDisc("Hành �
 - DigitalVideoDisc(String category, String title, float cost)
 #Lab03
 Câu hỏi : Thử sử dụng tham số có số lượng tùy biến( varargs) thay vì dùng mảng. Bạn thích dùng cái nào hon trong trường hợp này? Vì sao?
-> Varargs có ưu điểm là dễ dùng, gọn, không cần tạo mảng trước, tuy nhiên nó về bản chất vẫn là mảng nên không khác gì về hiệu năng
-> Array thì rõ ràng, kiếm soát được, tuy nhiên nó lại dài dòng hơn khi gọi vì cần tạo mảng trước.
-> Ở trường hợp này tôi sẽ ưu tiên dùng Varargs vì nó đơn giản, việc thêm các đĩa vào sẽ dễ dàng hơn.
+	> Varargs có ưu điểm là dễ dùng, gọn, không cần tạo mảng trước, tuy nhiên nó về bản chất vẫn là mảng nên không khác gì về hiệu năng
+	> Array thì rõ ràng, kiếm soát được, tuy nhiên nó lại dài dòng hơn khi gọi vì cần tạo mảng trước.
+	> Ở trường hợp này tôi sẽ ưu tiên dùng Varargs vì nó đơn giản, việc thêm các đĩa vào sẽ dễ dàng hơn.
+
+Câu hỏi:Is JAVA a Pass by Value or a Pass by Reference programming language?  
+	>Java là Pass-by-Value.
+*Với kiểu nguyên thủy, giá trị được sao chép.
+*Với kiểu tham chiếu, giá trị của tham chiếu (địa chỉ) được sao chép. Việc thay đổi nội dung đối tượng là có thể, nhưng việc gán lại tham chiếu mới không ảnh hưởng đến biến gốc – đó là minh chứng rõ nhất cho pass-by-value.
