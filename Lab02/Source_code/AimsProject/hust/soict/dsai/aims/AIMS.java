@@ -1,21 +1,32 @@
-package hust.soict.dsai.aims;
-
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Book;
+import hust.soict.dsai.aims.media.CompactDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Track;
 
 public class AIMS {
 	public static void main(String[] args) {
-		Cart anOrder = new Cart();
-		
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King","Animation","Roger Allers",87,19.95f);
+		Cart cart = new Cart();
 
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars","Science Fiction","George Lucas",87,24.95f);
-		anOrder.addDigitalVideoDisc(dvd1,dvd2);
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin","Animation",18.99f);
-		anOrder.addDigitalVideoDisc(dvd3);
+		DigitalVideoDisc dvd = new DigitalVideoDisc("The Matrix", "Action", "Wachowski", 120, 19.99f);
+		Book book = new Book(2, "Clean Code", "Programming", 45.99f);
+		CompactDisc cd = new CompactDisc();
+		cd.setTitle("Thriller");
+		cd.setArtist("Michael Jackson");
+		Track t1 = new Track("Billie Jean", 294);
+		Track t2 = new Track("Beat It", 258);
+		cd.addTrack(t1);
+		cd.addTrack(t2);
 
-		anOrder.removeDigitalVideoDisc(dvd2);
-		System.out.println("Total Cost is: " + anOrder.totalCost());
-		anOrder.removeDigitalVideoDisc(dvd2);
+		cart.addMedia(dvd);
+		cart.addMedia(book);
+		cart.addMedia(cd);
+
+		cart.printCart();
+
+		// Play tests
+		dvd.play();
+		cd.play();
+		t1.play();
 	}
 }

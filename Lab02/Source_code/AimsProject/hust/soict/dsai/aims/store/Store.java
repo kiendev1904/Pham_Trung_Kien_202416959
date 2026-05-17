@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.store;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class Store {
     // Thuộc tính: mảng lưu các DVD trong cửa hàng

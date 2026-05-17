@@ -1,6 +1,6 @@
 package hust.soict.dsai.test.store;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {
@@ -8,7 +8,7 @@ public class StoreTest {
         // Tạo cửa hàng
         Store myStore = new Store();
 
-        // Tạo một số DVD mẫu (giả sử lớp hust.soict.dsai.aims.disc.DigitalVideoDisc có các constructor phù hợp)
+        // Tạo một số DVD mẫu (giả sử lớp hust.soict.dsai.aims.media.DigitalVideoDisc có các constructor phù hợp)
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 121, 24.95f);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", "Ron Clements", 90, 18.99f);
