@@ -1,0 +1,42 @@
+Câu 1: Điều gì xảy ra nếu người dùng chọn "Cancel"?
+- Chương trình sẽ hiển thị thông báo "You've chosen: No" vì
+	+) vì khi người dùng bấm "Cancel" (hoặc nhấn nút X để đóng cửa sổ), phương thức JOptionPane.showConfirmDilog sẽ trả về giá trị hằng số JOption.CANCEL_OPTION (hoặc CLOSED_OPTION)
+	+) ở dòng lệnh tiếp theo, chương trình sử dụng toán tử 3 ngôi để kiểm tra nhằm ám chỉ nếu không chọn YES thì biểu thức sẽ hiểu là NO
+=> Do đó, chương trình sẽ lấy giá trị "No" và in ra màn hình
+Câu 2: Làm thế nào để tùy chỉnh các lựa chọn cho người dùng?
+a) Nếu chỉ muốn hiển thị 2 lựa chọn "Yes" và "No"
+- Vẫn sử dụng phương thức showConfirmDialog nhưng truyền thêm tham số optionType là JOptionPane.YES_NO_OPTION.
+Code minh họa:
+
+import javax.swing.JOptionPane;
+
+public class Test {
+    public static void main(String[] args) {
+        // Dùng showConfirmDialog sẽ tự động có nút Yes/No/Cancel
+        int option = JOptionPane.showConfirmDialog(null, 
+    "Do you want to change to the first class ticket?", 
+    "Confirmation",JOptionPane.YES_NO_OPTION); 
+        
+        System.exit(0);
+    }
+}
+
+b) Nếu muốn tạo các tùy chỉnh bằng chữ
+- Không thể sử dụng showConfirmDialog nữa mà phải chuyển sang phương thức JOptionDialog().
+Code minh hoa:
+import javax.swing.JOptionPane;
+
+public class Test {
+    public static void main(String[] args) {
+        String[] customOptions = {"I do", "I don't"};
+
+int option = JOptionPane.showOptionDialog(null,
+    "Do you want to change to the first class ticket?",
+    "Custom Title", 
+    JOptionPane.YES_NO_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null,           
+    customOptions,  
+    customOptions[0]); 
+    }
+}
