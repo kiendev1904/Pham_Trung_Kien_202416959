@@ -14,6 +14,11 @@ public class Disc extends Media {
         this.length = length;
         this.director = director;
     }
+    @Override
+    public String toString() {
+        return "Disc [id=" + getId() + ", title=" + getTitle() + ", category=" + getCategory()
+                + ", cost=" + getCost() + ", director=" + director + ", length=" + length + "]";
+    }
 
     // Getter methods
     public int getLength() {

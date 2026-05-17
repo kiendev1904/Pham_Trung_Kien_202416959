@@ -43,4 +43,9 @@ public class Book extends Media {
         System.out.println("Cost: " + getCost());
         System.out.println("Authors: " + String.join(", ", authors));
     }
+    @Override
+    public String toString() {
+        return "Book [id=" + getId() + ", title=" + getTitle() + ", category=" + getCategory()
+                + ", cost=" + getCost() + ", authors=" + String.join(", ", authors) + "]";
+    }
 }

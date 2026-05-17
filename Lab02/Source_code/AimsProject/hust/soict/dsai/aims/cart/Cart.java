@@ -2,6 +2,7 @@ package hust.soict.dsai.aims.cart;
 
 import hust.soict.dsai.aims.media.Media;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -89,5 +90,19 @@ public class Cart {
     // --- (Giữ lại phương thức printCart cũ nếu muốn) ---
     public void printCart() {
         print(); // gọi lại phương thức print mới
+    }
+    public void sortByTitleThenCost() {
+        Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+        System.out.println("Cart sorted by title (then cost descending).");
+    }
+
+    // Sắp xếp theo cost rồi title
+    public void sortByCostThenTitle() {
+        Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+        System.out.println("Cart sorted by cost descending (then title).");
+    }
+
+    public ArrayList<Media> getItemsOrdered() {
+        return itemsOrdered;
     }
 }

@@ -44,4 +44,8 @@ public class Track implements Playable {
         Track track = (Track) obj;
         return length == track.length && title.equals(track.title);
     }
+    @Override
+    public String toString() {
+        return "Track [title=" + title + ", length=" + length + " sec]";
+    }
 }

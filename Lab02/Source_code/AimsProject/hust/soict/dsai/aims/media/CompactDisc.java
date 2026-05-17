@@ -58,6 +58,22 @@ public class CompactDisc extends Disc implements Playable{
             System.out.println("Track not found: " + track.getTitle());
         }
     }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("CD [id=").append(getId())
+                .append(", title=").append(getTitle())
+                .append(", category=").append(getCategory())
+                .append(", cost=").append(getCost())
+                .append(", artist=").append(artist)
+                .append(", tracks=[");
+        for (int i = 0; i < tracks.size(); i++) {
+            if (i > 0) sb.append(", ");
+            sb.append(tracks.get(i).getTitle());
+        }
+        sb.append("]]");
+        return sb.toString();
+    }
 
     // Override getLength() to sum track lengths
     @Override

@@ -16,17 +16,17 @@ public class StoreTest {
 
         // Thêm DVD vào store
         System.out.println("--- Adding DVDs ---");
-        myStore.addDVD(dvd1);
-        myStore.addDVD(dvd2);
-        myStore.addDVD(dvd3);
-        myStore.addDVD(dvd4);
+        myStore.addMedia(dvd1);
+        myStore.addMedia(dvd2);
+        myStore.addMedia(dvd3);
+        myStore.addMedia(dvd4);
 
         // In cửa hàng sau khi thêm
         myStore.printStore();
 
         // Xóa một DVD
         System.out.println("\n--- Removing 'Star Wars' ---");
-        myStore.removeDVD(dvd2);
+        myStore.removeMedia(dvd2);
 
         // In lại cửa hàng sau khi xóa
         myStore.printStore();
@@ -34,7 +34,7 @@ public class StoreTest {
         // Thử xóa một DVD không có trong store
         DigitalVideoDisc dvd5 = new DigitalVideoDisc("Frozen", "Animation", "Chris Buck", 102, 22.95f);
         System.out.println("\n--- Trying to remove a DVD not in store ---");
-        myStore.removeDVD(dvd5);
+        myStore.removeMedia(dvd5);
 
         // Thử thêm DVD khi store đầy (không cần test với MAX=100, nhưng có thể thêm vòng lặp để minh họa)
         // (nếu cần, có thể tạo thêm DVD và thêm đến khi đầy)
