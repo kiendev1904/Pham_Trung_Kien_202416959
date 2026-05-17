@@ -27,17 +27,17 @@ public class DigitalVideoDisc {
 	public void setTitle(String title){
 		this.title = title;
 	}
-
+	public int getId() { return id; }
 	
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		
+		this.id = ++nbDigitalVideoDiscs;
 		this.title = title;
 		this.category = category;
 		this.director = director;
 		this.cost = cost;
 	}
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		
+		this.id = ++nbDigitalVideoDiscs;
 		this.title = title;
 		this.category = category;
 		this.director = director;
@@ -45,13 +45,20 @@ public class DigitalVideoDisc {
 		this.cost = cost;
 	}
 	public DigitalVideoDisc(String title, String category, float cost) {
-		
+		this.id = ++nbDigitalVideoDiscs;
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
 	}
 	public float getCost() {
 		return cost;
+	}
+	@Override
+	public String toString() {
+		return "DVD - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + " $";
+	}
+	public boolean isMatch(String keyword) {
+		return title.toLowerCase().contains(keyword.toLowerCase());
 	}
 	
 }
