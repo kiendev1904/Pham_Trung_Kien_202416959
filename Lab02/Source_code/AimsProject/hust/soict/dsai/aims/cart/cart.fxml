@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.soict.dsai.aims.screen.CartScreenController">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="Options">
+                    <MenuItem text="View Store" onAction="#viewStoreMenuPressed" />
+                    <MenuItem text="Update Store" onAction="#updateStoreMenuPressed" />
+                </Menu>
+            </MenuBar>
+            <Label style="-fx-font-size: 50px; -fx-text-fill: #00ffff;" text="CART" BorderPane.alignment="CENTER">
+                <padding>
+                    <Insets left="10.0" />
+                </padding>
+            </Label>
+        </VBox>
+    </top>
+    <center>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets left="10.0" right="10.0" top="10.0" bottom="10.0" />
+            </padding>
+            <children>
+                <!-- Filter row -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                    </padding>
+                    <Label text="Filter:" />
+                    <TextField fx:id="tfFilter" promptText="Enter filter..." />
+                    <RadioButton fx:id="radioBtnFilterId" text="By ID" toggleGroup="$filterGroup" />
+                    <RadioButton fx:id="radioBtnFilterTitle" text="By Title" selected="true" toggleGroup="$filterGroup" />
+                </HBox>
+
+                <!-- TableView -->
+                <TableView fx:id="tblMedia" prefHeight="400.0">
+                    <columns>
+                        <TableColumn fx:id="colMediaTitle" prefWidth="400.0" text="Title" />
+                        <TableColumn fx:id="colMediaCategory" prefWidth="200.0" text="Category" />
+                        <TableColumn fx:id="colMediaCost" prefWidth="150.0" text="Cost" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableColumnResizePolicy fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+
+                <!-- Button Bar -->
+                <ButtonBar>
+                    <buttons>
+                        <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayPressed" text="Play" />
+                        <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemovePressed" text="Remove" />
+                    </buttons>
+                </ButtonBar>
+            </children>
+        </VBox>
+    </center>
+    <right>
+        <VBox alignment="TOP_CENTER" spacing="10.0">
+            <padding>
+                <Insets top="50.0" />
+            </padding>
+            <children>
+                <HBox alignment="CENTER">
+                    <Label style="-fx-font-size: 24px;" text="Total: " />
+                    <Label fx:id="lblTotalCost" style="-fx-font-size: 24px; -fx-text-fill: #00ffff;" text="0.0 $" />
+                </HBox>
+                <Button onAction="#btnPlaceOrderPressed" style="-fx-background-color: red; -fx-text-fill: white;" text="Place Order" />
+            </children>
+        </VBox>
+    </right>
+</BorderPane>

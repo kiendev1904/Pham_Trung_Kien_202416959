@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
-    private ArrayList<Media> itemsOrdered = new ArrayList<>();
-
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     // --- Thêm media (có thể thêm 1 hoặc nhiều) ---
     public void addMedia(Media... mediaList) {
         for (Media media : mediaList) {
@@ -102,7 +103,7 @@ public class Cart {
         System.out.println("Cart sorted by cost descending (then title).");
     }
 
-    public ArrayList<Media> getItemsOrdered() {
+    public ObservableList<Media> getItemsOrdered() {
         return itemsOrdered;
     }
 }
