@@ -12,7 +12,7 @@ public class Aims {
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// Tạo dữ liệu mẫu cho cửa hàng
+		// Tạo dữ liệu mẫu cho cửa hàn
 		initStore();
 
 		while (true) {
