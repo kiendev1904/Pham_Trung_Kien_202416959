@@ -51,6 +51,9 @@ public abstract class Media {
     }
 
     public void setCost(float cost) {
+        if (cost < 0) {
+            throw new IllegalArgumentException("Cost cannot be negative!");
+        }
         this.cost = cost;
     }
     @Override

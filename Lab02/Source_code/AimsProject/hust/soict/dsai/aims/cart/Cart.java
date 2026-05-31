@@ -12,6 +12,10 @@ public class Cart {
     private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     // --- Thêm media (có thể thêm 1 hoặc nhiều) ---
     public void addMedia(Media... mediaList) {
+        if (itemsOrdered.size() >= 20) {
+            throw new IllegalStateException("Cart is full! Maximum 20 items.");
+        }
+        itemsOrdered.add(media);
         for (Media media : mediaList) {
             if (media == null) {
                 System.out.println("Cannot add null media.");
