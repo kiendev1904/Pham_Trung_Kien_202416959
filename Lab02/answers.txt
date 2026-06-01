@@ -19,12 +19,121 @@ Do đó, khi chúng ta gọi lệnh khởi tạo: 'new DigitalVideoDisc("Hành �
 - DigitalVideoDisc(String title) 
 - DigitalVideoDisc(String category, String title, float cost)
 #Lab03
-Câu hỏi : Thử sử dụng tham số có số lượng tùy biến( varargs) thay vì dùng mảng. Bạn thích dùng cái nào hon trong trường hợp này? Vì sao?
+Câu hỏi 1: Thử sử dụng tham số có số lượng tùy biến( varargs) thay vì dùng mảng. Bạn thích dùng cái nào hon trong trường hợp này? Vì sao?
 	> Varargs có ưu điểm là dễ dùng, gọn, không cần tạo mảng trước, tuy nhiên nó về bản chất vẫn là mảng nên không khác gì về hiệu năng
 	> Array thì rõ ràng, kiếm soát được, tuy nhiên nó lại dài dòng hơn khi gọi vì cần tạo mảng trước.
 	> Ở trường hợp này tôi sẽ ưu tiên dùng Varargs vì nó đơn giản, việc thêm các đĩa vào sẽ dễ dàng hơn.
 
-Câu hỏi:Is JAVA a Pass by Value or a Pass by Reference programming language?  
+Câu hỏi 2:Is JAVA a Pass by Value or a Pass by Reference programming language?  
 	>Java là Pass-by-Value.
 *Với kiểu nguyên thủy, giá trị được sao chép.
 *Với kiểu tham chiếu, giá trị của tham chiếu (địa chỉ) được sao chép. Việc thay đổi nội dung đối tượng là có thể, nhưng việc gán lại tham chiếu mới không ảnh hưởng đến biến gốc – đó là minh chứng rõ nhất cho pass-by-value.
+
+Câu hỏi 3: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain? 
+>Vì Java truyền tham số theo giá trị (pass-by-value). Trong phương thức swap, o1 và o2 là bản sao của các tham chiếu jungleDVD và cinderellaDVD. Khi hoán đổi o1 và o2, chỉ các bản sao cục bộ bị thay đổi, còn các biến gốc bên ngoài vẫn trỏ đến đối tượng cũ → title không đổi.
+
+Câu hỏi 4: After the call of changeTitle(jungleDVD,cinderellaDVD.getTitle()) why is 
+the title of the JungleDVD changed?
+>Vì dvd nhận bản sao của tham chiếu jungleDVD, nên dvd và jungleDVD cùng trỏ đến một đối tượng. Dòng dvd.setTitle(title) thay đổi nội dung của chính đối tượng đó. Dòng dvd = new DigitalVideoDisc(oldTitle) chỉ gán lại tham chiếu cục bộ dvd sang đối tượng mới, không ảnh hưởng đến jungleDVD. Do đó, jungleDVD có title mới.
+
+Câu hỏi 5: What should be the return type of this method? 
+
+>Trong Java, phương thức toString() được kế thừa từ lớp Object và có chữ ký:public String toString()
+Khi ghi đè (override), bạn phải giữ nguyên kiểu trả về là String. Phương thức này trả về một chuỗi văn bản mô tả đối tượng, phù hợp để in ra màn hình hoặc ghép chuỗi.
+
+## Lab04
+
+Câu hỏi 1: === Giải thích về tính đa hình (Polymorphism) trong bài tập ===
+
+1. Khái niệm:
+   Tính đa hình cho phép một tham chiếu kiểu cha (superclass) có thể trỏ đến
+   đối tượng của bất kỳ lớp con nào. Trong chương trình trên, lớp Media là
+   lớp cha (abstract) của các lớp DigitalVideoDisc, Book, CompactDisc.
+
+2. Thể hiện trong code:
+   - ArrayList<Media> mediaList chứa các đối tượng thuộc nhiều kiểu khác nhau
+     (DVD, Book, CD) nhưng tất cả đều được xem như Media.
+   - Khi duyệt vòng lặp for (Media m : mediaList), biến m có kiểu Media,
+     nhưng thực tế nó tham chiếu đến đối tượng cụ thể (DVD, Book, CD).
+
+3. Dynamic Binding (liên kết động):
+   - Khi gọi m.toString(), phương thức được thực thi không phải của lớp Media
+     mà là phiên bản toString() của lớp thực tế (ví dụ DigitalVideoDisc.toString()).
+   - Điều này xảy ra tại thời gian chạy (runtime) nhờ cơ chế đa hình.
+   - Mỗi lớp con override toString() để hiển thị thông tin riêng.
+
+4. Lợi ích của đa hình:
+   - Viết code linh hoạt: một phương thức (ví dụ in danh sách) có thể làm việc
+     với mọi loại Media mà không cần biết cụ thể kiểu.
+   - Dễ mở rộng: sau này thêm lớp mới (ví dụ VinylRecord) chỉ cần extends Media
+     và override toString(), không cần sửa các lớp khác.
+   - Giảm trùng lặp code: dùng chung collection, vòng lặp, xử lý.
+
+5. Ứng dụng trong AIMS:
+   - Giỏ hàng (Cart) và cửa hàng (Store) dùng ArrayList<Media> để lưu trữ.
+   - Phương thức addMedia(Media media) nhận bất kỳ loại media nào.
+   - Khi in giỏ hàng, chỉ cần gọi toString() của từng media, kết quả hiển thị
+     đúng thông tin chi tiết nhờ đa hình.
+
+6. Kết luận:
+   Tính đa hình là một trụ cột quan trọng của lập trình hướng đối tượng,
+   giúp chương trình dễ bảo trì, mở rộng và có tính tái sử dụng cao.
+
+
+Câu hỏi 2 : === Câu hỏi về Comparable ===
+
+1. Lớp nào nên implement Comparable?
+   Lớp Media (hoặc từng lớp con nếu muốn quy tắc riêng). Tuy nhiên Comparable chỉ cung cấp một thứ tự tự nhiên.
+
+2. Cài đặt compareTo như thế nào?
+   So sánh title trước, nếu bằng thì so sánh cost giảm dần (hoặc theo yêu cầu). Ví dụ:
+   public int compareTo(Media other) {
+       int cmp = this.title.compareTo(other.title);
+       if (cmp != 0) return cmp;
+       return Float.compare(other.cost, this.cost);
+   }
+
+3. Có thể có 2 quy tắc sắp xếp (title→cost và cost→title) với Comparable không?
+   Không. Comparable chỉ cho phép một thứ tự duy nhất. Để có nhiều thứ tự, bắt buộc dùng Comparator.
+
+4. Nếu DVD có quy tắc riêng (title → length giảm → cost), sửa code thế nào?
+   - Không thể sửa compareTo trong Media vì sẽ ảnh hưởng đến các lớp con khác.
+   - Giải pháp: tạo Comparator riêng cho DVD, hoặc dùng Comparator tổng hợp kiểm tra instanceof.
+   - Ví dụ: xem code COMPARE_DVD_SPECIAL ở trên.
+   - Cách tốt nhất: khi sắp xếp collection chỉ gồm DVD, dùng Comparator riêng; khi trộn lẫn, dùng comparator tổng hợp
+
+## Lab05
+Câu1 : Compare Swing and AWT elements
+Điểm giống nhau:
+- Cả hai đều sử dụng mô hình lập trình hướng sự kiện (event-driven) tương tự.
+- Có các thành phần container (Frame, Panel) và component (Button, TextField, Label...).
+- Cách đăng ký và xử lý sự kiện (ActionListener) gần như giống hệt nhau.
+
+Điểm khác biệt chính:
+
+1. Top-level containers:
+   - AWT: dùng Frame, Dialog, Applet (nặng, phụ thuộc vào nền tảng)
+   - Swing: dùng JFrame, JDialog, JApplet (nhẹ, viết bằng Java thuần túy)
+
+2. Tên lớp component tương ứng:
+   | AWT          | Swing         |
+   |--------------|---------------|
+   | Button       | JButton       |
+   | TextField    | JTextField    |
+   | Label        | JLabel        |
+   | TextArea     | JTextArea     |
+   | Checkbox     | JCheckBox     |
+   | List         | JList         |
+   | Panel        | JPanel        |
+
+3. Cách thêm component:
+   - AWT: add(component) trực tiếp lên Frame.
+   - Swing: phải thêm vào contentPane của JFrame (getContentPane().add(component)).
+
+4. Look and Feel:
+   - AWT: phụ thuộc hoàn toàn vào giao diện hệ điều hành.
+   - Swing: có thể thay đổi Look and Feel (Pluggable Look and Feel).
+
+5. Tính năng:
+   - Swing có nhiều component phức tạp hơn: JTable, JTree, JSpinner, JSlider...
+   - Swing hỗ trợ các layout manager mạnh mẽ hơn (BoxLayout, SpringLayout...).
